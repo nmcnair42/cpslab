@@ -1,0 +1,6 @@
+Upload your code into your recent Github account.
+Download buggy code 00buggy-temp.c and fix the bugs (relevant for your upcoming exam).
+Download 02avg.c and answer the following questions related to this code.
+a. What does this code do?
+b. Calculate the mean, median, mode and standard deviation for the scores of the students.
+c.Use 04use-read.c to calculate the mean median mode and standard deviation for the scores of 20 students.
