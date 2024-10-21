@@ -65,3 +65,11 @@ double bisection (int a, int b) {
         counter += 1;
     }
 }
+
+double newton(int init) {
+
+}
+
+double secant(int init, int first) {
+    
+}
