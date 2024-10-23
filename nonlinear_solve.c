@@ -30,12 +30,13 @@ int main () {
             printf("Finding zero for domain [%d, %d].\n", x0, x1);
             result = bisection(x0, x1);
             break;
-        /*
+        
         case 2:
             printf("Input an initial guess: \n");
             scanf("%d \n", &initialguess);
             result = newton(initialguess);
             break;
+        /*
         case 3:
             printf("Input initial values: \n");
             scanf("%d \n", &x0);
@@ -71,7 +72,7 @@ int sign(double x) {
 
 double bisection (int a, int b) {
     
-    double c, fb, fa, w, a_, b_;
+    double c, w;
     int counter = 0;
 
     double a_ = a;
@@ -111,7 +112,25 @@ double bisection (int a, int b) {
 }
 
 double newton(int init) {
-    return 0;
+
+    double root;
+    double c = init;
+    int counter = 0;
+
+    while (counter < maxIter) {
+        
+        root = c - f(c)/d_f(c);
+
+        if (fabs(root-c) < tol || fabs(f(root)) < error ) {
+            break;
+        }
+
+        c = root;
+        counter += 1;
+    }
+
+    printf("Converged to %lf in %d iterations!\n", root, counter);
+    return root;
 }
 
 double secant(int init, int first) {
