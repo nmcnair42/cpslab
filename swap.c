@@ -2,11 +2,12 @@
 
 void myswap ( int *a, int *b) {
 
-	int c = a;
-	a = b;
-	b = c;
+	int c = *a;
 
-	printf("Swap function prints: a= %d, b = %d \n", a, b);
+	*a = *b;
+	*b = c;
+
+	printf("Swap function prints: a= %d, b = %d \n", *a, *b);
 
 }
 
