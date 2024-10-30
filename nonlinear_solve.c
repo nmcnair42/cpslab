@@ -33,16 +33,16 @@ int main () {
         
         case 2:
             printf("Input an initial guess: \n");
-            scanf("%d \n", &initialguess);
+            scanf("%d", &initialguess);
             result = newton(initialguess);
             break;
-        /*
+        
         case 3:
-            printf("Input initial values: \n");
-            scanf("%d \n", &x0);
-            scanf("%d \n", &x1);
+            printf("Input two initial values: \n");
+            scanf("%d %d", &x0, &x1);
+            result = secant(x0, x1);
             break;
-            */
+            
         default:
             printf("Entry unacceptable.");
     }
@@ -85,6 +85,7 @@ double bisection (int a, int b) {
     if ( sign(fb) == sign(fa) ) {
         counter = maxIter;
         printf("Initial condition not satisfied\n");
+        return 0;
     }
 
     while (counter < maxIter) {
@@ -134,5 +135,25 @@ double newton(int init) {
 }
 
 double secant(int init, int first) {
+
+    double v0 = init;
+    double v1 = first;
+    double v2; 
+    int counter= 0;
+    do {
+        v2 = v1 - (((v1-v0)*f(v1))/(f(v1)-f(v0)));
+        counter += 1;
+        printf("v2 = %lf at iteration %d, |f(x2)| = %lf\n", v2, counter, fabs(f(v2)));
+        if( counter == maxIter) {
+            printf("Max iterations reached no convergence\n");
+            break;
+        }
+        v0=v1;
+        v1=v2;
+    
+    } while(fabs(f(v2))> tol);
+
+    printf("The approximate root is %lf using %d iterations\n", v2, counter);
+
     return 0;
 }
